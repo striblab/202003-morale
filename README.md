@@ -11,6 +11,25 @@ cd svelte-app
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
 
+## Publishing
+
+This project pulls JSON from a Google Form/Google Sheet on the teamjpg account. There is setup to do after cloning this repository.
+
+### Setup
+
+1. cd into this directory and run this command `touch .env`. You'll need this in order to run the publishing shell script
+1. Ask Thomas for a copy of the Google credentials JSON as well as the .env variables.
+1. Put the Google credentials JSON file into this file path `./src/data/`.
+1. Make sure that the Google credentials, .zip file with static assets and json are not being tracked by Git.
+
+### Publishing new content
+
+Note: You will need your .aws/credentials file in order to publish.
+
+1. From the repository directory, run `chmod 0755 publish.sh`. This changes the file permissions so that your computer knows that the shell script is an executable file. If you've already done this, skip this step.
+1. Go to the Google Drive folder that holds all the media assets and download it as a .zip file. Rename it `files.zip` and drag and drop it into the `./src/data/` directory. **Note: If the .zip file is not named `files.zip` the script will not run.**
+1. From the repository directory, run `./publish.sh`. This script deletes the original `files/` directory, unzips the zip file, uploads its content to S3, scrapes the JSON out of the Google Sheet and deletes the zip file. 
+
 
 ## Get started
 

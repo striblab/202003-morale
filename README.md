@@ -21,14 +21,15 @@ This project pulls JSON from a Google Form/Google Sheet on the teamjpg account. 
 1. Ask Thomas for a copy of the Google credentials JSON as well as the .env variables.
 1. Put the Google credentials JSON file into this file path `./src/data/`.
 1. Make sure that the Google credentials, .zip file with static assets and json are not being tracked by Git.
+1. Run `mkdir ./src/data/media` and subsequently run `mkdir ./src/data/zips`. `./src/data/media` is where all of our static assets will live and will sync with a folder on S3. `./src/data/zips` will serve as an archive in the event the Google Drive gets overrun. 
 
 ### Publishing new content
 
 Note: You will need your .aws/credentials file in order to publish.
 
 1. From the repository directory, run `chmod 0755 publish.sh`. This changes the file permissions so that your computer knows that the shell script is an executable file. If you've already done this, skip this step.
-1. Go to the Google Drive folder that holds all the media assets and download it as a .zip file. Rename it `files.zip` and drag and drop it into the `./src/data/` directory. **Note: If the .zip file is not named `files.zip` the script will not run.**
-1. From the repository directory, run `./publish.sh`. This script deletes the original `files/` directory, unzips the zip file, uploads its content to S3, scrapes the JSON out of the Google Sheet and deletes the zip file. 
+1. Go to the Google Drive folder that holds all the media assets and download it as a .zip file. Drag it into `./src/data`.
+1. From the repository directory, run `./publish.sh`. This script deletes the original `files/` directory, renames the zip file, unzips the zip file, uploads its content to S3, scrapes the JSON out of the Google Sheet, renames the zip file with a timestamp and moves it to an archive folder.
 
 
 ## Get started

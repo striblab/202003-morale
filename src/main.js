@@ -1,9 +1,9 @@
 import App from './App.svelte';
 
 const app = new App({
-	target: document.body,
+	target: document.querySelector('.l-article .l-article-body .l-container'),
 	props: {
-		'title': 'Star Tribune Svelte 3 app'
+		'title': 'Morale Boosters'
 	}
 });
 

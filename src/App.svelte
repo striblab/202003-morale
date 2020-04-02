@@ -1,11 +1,13 @@
 <script>
-	export let name;
+	export let title;
 </script>
 
 <style>
 	h1 {
 		color: purple;
+		text-align: center !important;
+		font-size: 25px !important;
 	}
 </style>
 
-<h1>Hello {name}!</h1>
+<h1>Hello {title}!</h1>

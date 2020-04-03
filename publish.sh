@@ -18,5 +18,5 @@ aws s3 sync ./src/data/media s3://static.startribune.com/news/projects/all/20200
 # scrape google sheet
 pipenv run python ./src/data/sheet_to_s3.py
 
-# delete the zip file
+# archive zip file
 mv ./src/data/files.zip ./src/data/zips/files_$(date +%Y%m%d%H%M).zip

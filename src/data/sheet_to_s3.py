@@ -38,8 +38,9 @@ def sheet_to_json(obj, filename):
         story = row[4]
         theme = switch(row[5])
         asset = 'https://static.startribune.com/news/projects/all/202003-morale/' + row[7]
-        publish = row[8]
-        featured = row[9]
+        type = row[8]
+        publish = row[9]
+        featured = row[10]
 
         if not row:
             continue
@@ -50,6 +51,7 @@ def sheet_to_json(obj, filename):
                 "story": story,
                 "theme": theme,
                 "asset": asset,
+                "type": type,
                 "publish": publish,
                 "featured": featured
             }

@@ -37,8 +37,11 @@ def sheet_to_json(obj, filename):
         name = row[2]
         story = row[4]
         theme = switch(row[5])
-        asset = 'https://static.startribune.com/news/projects/all/202003-morale/' + row[7]
         type = row[8]
+        if type == "photo":
+            asset = 'https://ststatic.stimg.co/news/projects/all/202003-morale/media/' + row[7]
+        else:
+            asset = 'https:/static.startribune.com/news/projects/all/202003-morale/media/' + row[7]
         publish = row[9]
         featured = row[10]
 

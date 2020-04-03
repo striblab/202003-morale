@@ -16,7 +16,7 @@
       return d.publish === 'TRUE';
     })
 
-		console.log(boosters)
+		boosters = boosters.reverse();
 	}
 
 
@@ -24,5 +24,16 @@
 
 <div class="proj-container">
 
+	{#each boosters as booster}
+		{#if booster.type === 'text'}
+			<p>text</p>
+		{:else if booster.type === 'photo'}
+			<Photo {booster}/>
+		{:else if booster.type === 'video'}
+			<Video {booster}/>
+		{:else if booster.type === 'audio'}
+			<p>audio</p>
+		{/if}
+	{/each}
 
 </div>

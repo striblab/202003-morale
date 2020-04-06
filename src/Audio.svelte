@@ -4,6 +4,9 @@ export let booster;
 
 </script>
 
-<audio>
-  <source src="{booster.asset}"/>
-</audio>
+<div class="card {booster.type}">
+  <audio>
+    <source src="{booster.asset}"/>
+  </audio>
+  <p>{booster.story}</p>
+</div>

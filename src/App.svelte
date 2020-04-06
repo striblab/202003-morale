@@ -26,13 +26,13 @@
 
 	{#each boosters as booster}
 		{#if booster.type === 'text'}
-			<p>text</p>
+			<Text {booster} />
 		{:else if booster.type === 'photo'}
-			<Photo {booster}/>
+			<Photo {booster} />
 		{:else if booster.type === 'video'}
-			<Video {booster}/>
+			<Video {booster} />
 		{:else if booster.type === 'audio'}
-			<p>audio</p>
+			<Audio {booster} />
 		{/if}
 	{/each}
 

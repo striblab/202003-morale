@@ -66,4 +66,6 @@ button:focus {
 	display: flex;
 	flex-wrap: wrap;
 	max-width: 1000px;
+	flex-direction: row;
+	justify-content: space-between;
 }

@@ -4,4 +4,6 @@ export let booster;
 
 </script>
 
-<p>{booster.story}</p>
+<div class="card {booster.type}">
+  <p>{booster.story}</p>
+</div>

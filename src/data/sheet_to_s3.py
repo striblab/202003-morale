@@ -1,5 +1,6 @@
 import gspread, os.path, boto3, json
 from datetime import datetime
+from dateutil.parser import parse
 from itertools import islice
 from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
@@ -33,7 +34,7 @@ def switch(i):
 def sheet_to_json(obj, filename):
     data_json = []
     for row in islice(obj, 1, None):
-        timestamp = row[1]
+        timestamp = parse(row[1]).strftime("%B %d")
         name = row[2]
         story = row[4]
         theme = switch(row[5])

@@ -5,6 +5,7 @@
   let height = 200;
 
   let url = booster.asset + '?w=' + width + '&h=' + height + '&fit=crop&crop=faces';
+  // let url = booster.asset + '?ar=6:4&fit=crop&crop=faces';
 </script>
 
 {#if booster.featured === "TRUE"}

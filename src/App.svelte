@@ -9,14 +9,23 @@
   import json from './data/data.json';
 
 	// props
-	export let boosters
+	export let boosters;
+	export let featured;
 
 	$: {
 		boosters = json.filter(function(d) {
       return d.publish === 'TRUE';
     })
 
+		featured = boosters.filter(function(d) {
+			return d.featured === 'TRUE';
+		})
+
+		featured = featured.reverse();
+
 		boosters = boosters.reverse();
+
+		console.log(featured)
 	}
 
 

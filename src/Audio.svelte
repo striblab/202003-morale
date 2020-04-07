@@ -7,6 +7,7 @@ export let booster;
 {#if booster.featured === "TRUE"}
 
 <div class="card featured {booster.type}">
+
 	<audio controls>
 		<source src="{booster.asset}"/>
 	</audio>
@@ -15,6 +16,7 @@ export let booster;
 		<p>{booster.story}</p>
 		<h4 class="author">— {booster.name}</h4>
 	</div>
+
 </div>
 
 {:else}

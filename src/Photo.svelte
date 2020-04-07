@@ -10,15 +10,23 @@
 {#if booster.featured === "TRUE"}
 
 <div class="card featured {booster.type}">
-  <img src="{url}" alt="Smile Minnesota photo"/>
-  <p>{booster.story}</p>
+	<img src="{url}" alt="Smile Minnesota photo"/>
+	<div class="text">
+		<h5 class="stamp">{booster.timestamp}</h5>
+		<p>{booster.story}</p>
+		<h4 class="author">— {booster.name}</h4>
+	</div>
 </div>
 
 {:else}
 
 <div class="card {booster.type}">
-  <img src="{url}" alt="Smile Minnesota photo"/>
-  <p>{booster.story}</p>
+	<img src="{url}" alt="Smile Minnesota photo"/>
+	<div class="text">
+		<h5 class="stamp">{booster.timestamp}</h5>
+		<p>{booster.story}</p>
+		<h4 class="author">— {booster.name}</h4>
+	</div>
 </div>
 
 {/if}

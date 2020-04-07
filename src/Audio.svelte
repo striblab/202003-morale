@@ -8,7 +8,7 @@ export let booster;
 
 <div class="card featured {booster.type}">
   <audio>
-    <source src="{booster.asset}"/>
+    <source src="{booster.asset}" type="audio/wav"/>
   </audio>
   <p>{booster.story}</p>
 </div>

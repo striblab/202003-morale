@@ -11,6 +11,7 @@
 	// props
 	export let boosters;
 	export let featured;
+	export let nonfeatured;
 
 	$: {
 		boosters = json.filter(function(d) {
@@ -23,9 +24,16 @@
 
 		featured = featured.reverse();
 
-		boosters = boosters.reverse();
+		nonfeatured = boosters.filter(function(d) {
+			return d.featured !== 'TRUE';
+		})
 
+		nonfeatured = nonfeatured.reverse();
+
+		// boosters = boosters.reverse();
 		console.log(featured)
+		console.log(boosters)
+
 	}
 
 
@@ -33,16 +41,16 @@
 
 <div class="proj-container">
 
-	{#each boosters as booster}
-		{#if booster.type === 'text'}
-			<Text {booster} />
-		{:else if booster.type === 'photo'}
-			<Photo {booster} />
-		{:else if booster.type === 'video'}
-			<Video {booster} />
-		{:else if booster.type === 'audio'}
-			<Audio {booster} />
-		{/if}
-	{/each}
+		{#each boosters as booster}
+			{#if booster.type === 'text'}
+				<Text {booster} />
+			{:else if booster.type === 'photo'}
+				<Photo {booster} />
+			{:else if booster.type === 'video'}
+				<Video {booster} />
+			{:else if booster.type === 'audio'}
+				<Audio {booster} />
+			{/if}
+		{/each}
 
 </div>

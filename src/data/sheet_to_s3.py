@@ -43,6 +43,7 @@ def sheet_to_json(obj, filename):
             asset = 'https://ststatic.stimg.co/news/projects/all/202003-morale/media/' + row[7]
         else:
             asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[7]
+        shape = row[18]
         publish = row[9]
         featured = row[10]
 
@@ -56,6 +57,7 @@ def sheet_to_json(obj, filename):
                 "theme": theme,
                 "asset": asset,
                 "type": type,
+                "shape": shape,
                 "publish": publish,
                 "featured": featured
             }

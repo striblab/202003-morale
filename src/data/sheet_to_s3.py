@@ -1,4 +1,5 @@
-import gspread, os.path, boto3, json
+import gspread, os.path, boto3, json, tempfile, requests, shutil, cv2
+from PIL import Image
 from datetime import datetime
 from dateutil.parser import parse
 from itertools import islice
@@ -31,6 +32,43 @@ def switch(i):
     }
     return switcher.get(i, "")
 
+def shape_detection(url, type):
+    if type == 'photo':
+        response = requests.get(url, stream=True)
+        tmp = tempfile.TemporaryFile()
+        tmp = response.raw
+
+        im = Image.open(tmp)
+
+        if im.width > im.height:
+            aspect = 'Landscape'
+        elif im.height > im.width:
+            aspect = 'Portrait'
+        elif im.height == im.width:
+            aspect = 'Landscape'
+
+        tmp.close()
+
+        return aspect
+    elif type == 'video':
+        vcap = cv2.VideoCapture(url) # 0=camera
+
+        width  = vcap.get(cv2.CAP_PROP_FRAME_WIDTH)
+        height = vcap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+
+        if width > height:
+            aspect = 'Landscape'
+        elif height > width:
+            aspect = 'Portrait'
+        elif height == width:
+            aspect = 'Landscape'
+
+        vcap.release()
+        cv2.destroyAllWindows()
+
+        return aspect
+
+
 def sheet_to_json(obj, filename):
     data_json = []
     for row in islice(obj, 1, None):
@@ -43,7 +81,12 @@ def sheet_to_json(obj, filename):
             asset = 'https://ststatic.stimg.co/news/projects/all/202003-morale/media/' + row[7]
         else:
             asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[7]
-        shape = row[18]
+
+        if type == "photo" or "video":
+            shape = shape_detection(asset, type)
+        else:
+            shape = ''
+
         publish = row[9]
         featured = row[10]
 

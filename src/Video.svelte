@@ -13,7 +13,7 @@
 
       <div class="card featured {booster.type} portrait">
 
-        <video height="800" controls>
+        <video height="400" controls>
           <source src="{booster.asset}" type="video/mp4">
         </video>
         <div class="text">
@@ -28,7 +28,7 @@
 
       <div class="card featured {booster.type} landscape">
 
-        <video height="800" controls>
+        <video height="300" controls>
           <source src="{booster.asset}" type="video/mp4">
         </video>
         <div class="text">
@@ -47,7 +47,7 @@
 
       <div class="card {booster.type} portrait">
 
-        <video height="800" controls>
+        <video height="400" width="auto" controls>
           <source src="{booster.asset}" type="video/mp4">
         </video>
         <div class="text">
@@ -62,7 +62,7 @@
 
       <div class="card {booster.type} landscape">
 
-        <video height="800" controls>
+        <video height="400" width="600"  controls>
           <source src="{booster.asset}" type="video/mp4">
         </video>
         <div class="text">

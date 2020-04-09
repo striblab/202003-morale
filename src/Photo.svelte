@@ -1,11 +1,14 @@
 <script>
   export let booster;
 
-  let width = 300;
-  let height = 200;
+  let pWidth = 300;
+  let pHeight = 400;
 
-  let url = booster.asset + '?w=' + width + '&h=' + height + '&fit=crop&crop=faces';
-  // let url = booster.asset + '?ar=6:4&fit=crop&crop=faces';
+  let lWidth = 300;
+  let lHeight = 200;
+
+  let pUrl = booster.asset + '?w=' + pWidth + '&h=' + pHeight + '&fit=crop&crop=faces';
+  let lUrl = booster.asset + '?w=' + lWidth + '&h=' + lHeight + '&fit=crop&crop=faces';
 </script>
 
 {#if booster.featured === "TRUE"}
@@ -13,7 +16,7 @@
   {#if booster.shape === "Portrait"}
 
     <div class="card featured {booster.type} portrait">
-      <img src="{url}" alt="Smile Minnesota photo"/>
+      <img src="{pUrl}" alt="Smile Minnesota photo"/>
       <div class="text">
         <h5 class="stamp">{booster.timestamp}</h5>
         <p>{booster.story}</p>
@@ -24,7 +27,7 @@
   {:else}
 
     <div class="card featured {booster.type} landscape">
-      <img src="{url}" alt="Smile Minnesota photo"/>
+      <img src="{lUrl}" alt="Smile Minnesota photo"/>
       <div class="text">
         <h5 class="stamp">{booster.timestamp}</h5>
         <p>{booster.story}</p>
@@ -41,7 +44,7 @@
   {#if booster.shape === "Portrait"}
 
     <div class="card {booster.type} portrait">
-      <img src="{url}" alt="Smile Minnesota photo"/>
+      <img src="{pUrl}" alt="Smile Minnesota photo"/>
       <div class="text">
         <h5 class="stamp">{booster.timestamp}</h5>
         <p>{booster.story}</p>
@@ -52,7 +55,7 @@
   {:else}
 
     <div class="card {booster.type} landscape">
-      <img src="{url}" alt="Smile Minnesota photo"/>
+      <img src="{lUrl}" alt="Smile Minnesota photo"/>
       <div class="text">
         <h5 class="stamp">{booster.timestamp}</h5>
         <p>{booster.story}</p>

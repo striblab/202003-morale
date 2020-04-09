@@ -10,6 +10,12 @@
   &.featured {
     grid-area: span 2 / span 2;
   }
+  &.portrait {
+  	grid-area: span 1 / span 1;
+  }
+  &.landscape {
+  	grid-area: span 1 / span 2;
+  }
   .text {
   	padding: 20px;
   	h5 {
@@ -18,9 +24,10 @@
   		font-family: "Benton Sans";
   		font-weight: bold;
   		text-align: left;
-  		font-size: 12px;
+  		font-size: 11px;
   		letter-spacing: 1px;
   		margin-bottom: 20px;
+  		text-transform: uppercase;
   	}
   	p {
 		font-family: "Benton Sans";

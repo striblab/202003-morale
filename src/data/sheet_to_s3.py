@@ -76,7 +76,16 @@ def sheet_to_json(obj, filename):
         name = row[2]
         story = row[4]
         theme = switch(row[5])
-        type = row[8]
+
+        if row[7].endswith('.jpg') or row[7].endswith('.jpeg') or row[7].endswith('.png'):
+            type = 'photo'
+        elif row[7].endswith('MP4') or row[7].endswith('.mp4') or row[7].endswith('.mov'):
+            type = 'video'
+        elif row[7].endswith('.mp3') or row[7].endswith('.wav'):
+            type = 'audio'
+        else:
+            type = 'text'
+
         if type == "photo":
             asset = 'https://ststatic.stimg.co/news/projects/all/202003-morale/media/' + row[7]
         else:

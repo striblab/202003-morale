@@ -30,9 +30,7 @@
 
 		nonfeatured = nonfeatured.reverse();
 
-		// boosters = boosters.reverse();
-		console.log(featured)
-		console.log(boosters)
+		boosters = boosters.reverse();
 
 	}
 

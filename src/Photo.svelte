@@ -1,11 +1,11 @@
 <script>
   export let booster;
 
-  let pWidth = 300;
+  let pWidth = 400;
   let pHeight = 400;
 
-  let lWidth = 300;
-  let lHeight = 200;
+  let lWidth =600;
+  let lHeight = 350;
 
   let pUrl = booster.asset + '?w=' + pWidth + '&h=' + pHeight + '&fit=crop&crop=faces';
   let lUrl = booster.asset + '?w=' + lWidth + '&h=' + lHeight + '&fit=crop&crop=faces';

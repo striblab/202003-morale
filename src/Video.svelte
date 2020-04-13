@@ -3,7 +3,7 @@
   export let booster;
 
   let w = 300;
-  let h = 450;
+  let h = 400;
 
 </script>
 

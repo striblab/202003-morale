@@ -62,7 +62,19 @@ button:focus {
 
 // PROJECT SPECIFIC GLOBAL STYLES
 
-.proj-container {
+.intro-text {
+	margin: 0 auto;
+	max-width: 1200px;
+	margin-bottom: 50px;
+	p {
+		a {
+			text-decoration: underline;
+		}
+	}
+
+}
+
+.cards-grid {
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: repeat(4,1fr);

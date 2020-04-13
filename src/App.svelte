@@ -39,6 +39,11 @@
 
 <div class="proj-container">
 
+	<div class="intro-text">
+		<p>Do you have something good to share? <a href="https://www.startribune.com/x/569251431">Send us your morale booster here</a> for a chance to be published below.</p>
+	</div>
+
+	<div class="cards-grid">
 		{#each boosters as booster}
 			{#if booster.type === 'text'}
 				<Text {booster} />
@@ -50,5 +55,5 @@
 				<Audio {booster} />
 			{/if}
 		{/each}
-
+	</div>
 </div>

@@ -10,30 +10,33 @@
 
 	// props
 	export let boosters;
-	export let featured;
-	export let nonfeatured;
+
+	// local vars
+	let length;
+	let arr_slice_len;
+	let show_more = 'Show more';
+	arr_slice_len = 10;
+	let booster_length;
+
+	function handleButtonClick() {
+		arr_slice_len += 2;
+	}
 
 	$: {
+
+		booster_length = json.filter(function(d) {
+      return d.publish === 'TRUE';
+    }).length
+
 		boosters = json.filter(function(d) {
       return d.publish === 'TRUE';
     })
 
-		featured = boosters.filter(function(d) {
-			return d.featured === 'TRUE';
-		})
-
-		featured = featured.reverse();
-
-		nonfeatured = boosters.filter(function(d) {
-			return d.featured !== 'TRUE';
-		})
-
-		nonfeatured = nonfeatured.reverse();
-
 		boosters = boosters.reverse();
 
-	}
+		boosters = boosters.slice(0, arr_slice_len);
 
+	}
 
 </script>
 
@@ -56,4 +59,10 @@
 			{/if}
 		{/each}
 	</div>
+
+	{#if arr_slice_len < booster_length}
+		<div class="showMore" on:click={handleButtonClick}>
+			<p>{show_more}</p>
+		</div>
+	{/if}
 </div>

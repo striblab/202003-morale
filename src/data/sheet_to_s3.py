@@ -77,7 +77,7 @@ def sheet_to_json(obj, filename):
         story = row[4]
         theme = switch(row[5])
 
-        if row[7].endswith('.jpg') or row[7].endswith('.jpeg') or row[7].endswith('.png'):
+        if row[7].endswith('.jpg') or row[7].endswith('.jpeg') or row[7].endswith('.png') or row[7].endswith('JPG') or row[7].endswith('.PNG') or row[7].endswith('.JPEG'):
             type = 'photo'
         elif row[7].endswith('MP4') or row[7].endswith('.mp4') or row[7].endswith('.mov'):
             type = 'video'

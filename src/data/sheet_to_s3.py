@@ -97,7 +97,8 @@ def sheet_to_json(obj, filename):
             shape = ''
 
         publish = row[9]
-        featured = row[10]
+        from_strib = row[10]
+        url = row[19]
 
         if not row:
             continue
@@ -111,7 +112,8 @@ def sheet_to_json(obj, filename):
                 "type": type,
                 "shape": shape,
                 "publish": publish,
-                "featured": featured
+                "from_strib": from_strib,
+                "url": url
             }
             data_json.append(obj_props)
 

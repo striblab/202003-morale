@@ -7,11 +7,11 @@
 
 </script>
 
-  {#if booster.featured === "TRUE"}
+  {#if booster.from_strib === "TRUE"}
 
     {#if booster.shape === "Portrait"}
 
-      <div class="card featured {booster.type} portrait">
+      <div class="card strib {booster.type} portrait">
 
         <video height="400" controls>
           <source src="{booster.asset}" type="video/mp4">
@@ -26,7 +26,7 @@
 
     {:else}
 
-      <div class="card featured {booster.type} landscape">
+      <div class="card strib {booster.type} landscape">
 
         <video height="300" controls>
           <source src="{booster.asset}" type="video/mp4">

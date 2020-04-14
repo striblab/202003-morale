@@ -4,18 +4,18 @@
   let pWidth = 400;
   let pHeight = 400;
 
-  let lWidth =600;
+  let lWidth = 600;
   let lHeight = 350;
 
   let pUrl = booster.asset + '?w=' + pWidth + '&h=' + pHeight + '&fit=crop&crop=faces';
   let lUrl = booster.asset + '?w=' + lWidth + '&h=' + lHeight + '&fit=crop&crop=faces';
 </script>
 
-{#if booster.featured === "TRUE"}
+{#if booster.from_strib === "TRUE"}
 
   {#if booster.shape === "Portrait"}
 
-    <div class="card featured {booster.type} portrait">
+    <div class="card strib {booster.type} portrait">
       <img src="{pUrl}" alt="Smile Minnesota photo"/>
       <div class="text">
         <h5 class="stamp">{booster.timestamp}</h5>
@@ -26,7 +26,7 @@
 
   {:else}
 
-    <div class="card featured {booster.type} landscape">
+    <div class="card strib {booster.type} landscape">
       <img src="{lUrl}" alt="Smile Minnesota photo"/>
       <div class="text">
         <h5 class="stamp">{booster.timestamp}</h5>

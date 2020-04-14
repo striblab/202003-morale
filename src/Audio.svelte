@@ -4,9 +4,9 @@ export let booster;
 
 </script>
 
-{#if booster.featured === "TRUE"}
+{#if booster.from_strib === "TRUE"}
 
-<div class="card featured {booster.type}">
+<div class="card strib {booster.type}">
 
 	<audio controls>
 		<source src="{booster.asset}"/>

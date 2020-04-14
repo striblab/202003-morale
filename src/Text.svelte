@@ -4,9 +4,9 @@ export let booster;
 
 </script>
 
-{#if booster.featured === "TRUE"}
+{#if booster.from_strib === "TRUE"}
 
-<div class="card featured {booster.type}">
+<div class="card strib {booster.type}">
 	<div class="text">
 		<h5 class="stamp">{booster.timestamp}</h5>
 		<p>{booster.story}</p>

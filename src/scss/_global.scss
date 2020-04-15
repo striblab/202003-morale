@@ -123,23 +123,24 @@ button:focus {
 
 .showMore {
 	margin: 0 auto;
-	max-width: 400px;
+	max-width: 200px;
 	margin-bottom: 80px;
 
 	p {
+		font-family: "Benton Sans", sans-serif !important;
 		text-align: center;
 		text-transform: uppercase;
 		letter-spacing: 2px;
 		background-color: #61bf1a;
 		border: 1px solid #61bf1a;
 		color: white;
-		padding: 10px 85px;
+		padding: 10px 20px;
 	}
 }
 
 .showMore:hover {
 	cursor: pointer;
-	
+
 	p {
 		color: #61bf1a;
 		background-color: white;

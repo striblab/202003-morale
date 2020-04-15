@@ -3,7 +3,7 @@ import './scss/style.scss';
 
 
 const app = new App({
-	target: document.querySelector('.l-article .l-article-body .l-container'),
+	target: document.querySelector('#project-container'),
 	props: {
 		'title': 'Morale Boosters'
 	}

@@ -140,6 +140,7 @@ button:focus {
 	margin-bottom: 80px;
 	transition: 1s all;
 	p {
+		font-family: "Benton Sans", sans-serif !important;
 		text-align: center;
 		text-transform: uppercase;
 		letter-spacing: 2px;
@@ -151,7 +152,6 @@ button:focus {
 		font-weight: bold;
 		font-size: 13px !important;
 		letter-spacing: 0.5px;
-
 	}
 }
 

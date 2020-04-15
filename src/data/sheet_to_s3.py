@@ -75,30 +75,32 @@ def sheet_to_json(obj, filename):
         timestamp = parse(row[1]).strftime("%B %d")
         name = row[2]
         story = row[4]
-        theme = switch(row[5])
 
-        if row[7].endswith('.jpg') or row[7].endswith('.jpeg') or row[7].endswith('.png') or row[7].endswith('JPG') or row[7].endswith('.PNG') or row[7].endswith('.JPEG'):
+        if row[5].endswith('.jpg') or row[5].endswith('.jpeg') or row[5].endswith('.png') or row[5].endswith('JPG') or row[5].endswith('.PNG') or row[5].endswith('.JPEG'):
             type = 'photo'
-        elif row[7].endswith('MP4') or row[7].endswith('.mp4') or row[7].endswith('.mov'):
+        elif row[5].endswith('MP4') or row[5].endswith('.mp4') or row[5].endswith('.mov'):
             type = 'video'
-        elif row[7].endswith('.mp3') or row[7].endswith('.wav'):
+        elif row[5].endswith('.mp3') or row[5].endswith('.wav'):
             type = 'audio'
         else:
             type = 'text'
 
         if type == "photo":
-            asset = 'https://ststatic.stimg.co/news/projects/all/202003-morale/media/' + row[7]
+            asset = 'https://ststatic.stimg.co/news/projects/all/202003-morale/media/' + row[5]
+            asset2 = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[5]
         else:
-            asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[7]
+            asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[5]
 
-        if type == "photo" or "video":
+        if type == "photo":
+            shape = shape_detection(asset2, type)
+        elif type == "video":
             shape = shape_detection(asset, type)
         else:
             shape = ''
 
-        publish = row[9]
-        from_strib = row[10]
-        url = row[19]
+        publish = row[6]
+        from_strib = row[8]
+        url = row[16]
 
         if not row:
             continue
@@ -107,7 +109,6 @@ def sheet_to_json(obj, filename):
                 "timestamp": timestamp,
                 "name": name,
                 "story": story,
-                "theme": theme,
                 "asset": asset,
                 "type": type,
                 "shape": shape,

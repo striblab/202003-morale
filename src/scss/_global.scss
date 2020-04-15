@@ -7,7 +7,7 @@ html, body {
 body {
 	color: #333;
 	margin: 0;
-	padding: 8px;
+	padding: 0px;
 	box-sizing: border-box;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	background: #F8F9F9 !important;
@@ -97,6 +97,7 @@ button:focus {
 	max-width: 1200px;
 	margin-bottom: 50px;
 	display: block;
+
 	p {
 		text-align: center;
 		margin: 0 auto;
@@ -109,6 +110,11 @@ button:focus {
 		a {
 			text-decoration: underline;
 		}
+		@media only screen and (max-width: 1000px) {
+		    font-size: 15px;
+		    width: 285px;
+		    margin-bottom: 50px;
+		  }
 	}
 
 }
@@ -130,9 +136,9 @@ button:focus {
 
 .showMore {
 	margin: 0 auto;
-	max-width: 400px;
+	max-width: 150px;
 	margin-bottom: 80px;
-
+	transition: 1s all;
 	p {
 		text-align: center;
 		text-transform: uppercase;
@@ -140,13 +146,18 @@ button:focus {
 		background-color: #61bf1a;
 		border: 1px solid #61bf1a;
 		color: white;
-		padding: 10px 85px;
+		padding: 10px 10px;
+		font-family: "Benton Sans";
+		font-weight: bold;
+		font-size: 13px !important;
+		letter-spacing: 0.5px;
+
 	}
 }
 
 .showMore:hover {
 	cursor: pointer;
-	
+	transition: 1s all;
 	p {
 		color: #61bf1a;
 		background-color: white;

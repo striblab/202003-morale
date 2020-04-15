@@ -8,9 +8,9 @@ export let booster;
 
 <div class="card strib {booster.type}">
 	<div class="text">
-		<h5 class="stamp">{booster.timestamp}</h5>
+		<h5 class="stamp">{booster.timestamp} • <span class="green">Star Tribune</span></h5>
 		<p>{booster.story}</p>
-		<h4 class="author">— {booster.name}</h4>
+		<a href="{booster.url}" target="_blank"><h4 class="author">Read more</h4></a>
 	</div>
 </div>
 

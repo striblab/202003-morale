@@ -34,8 +34,14 @@
   	@media only screen and (min-width: 1001px) and (max-width: 1300px) {
 		width: 22%
 	  }
-	  @media only screen and (max-width: 1000px) {
+	  @media only screen and (min-width: 601px) and (max-width: 1000px) {
 		width: 90%;
+		video {
+	  		height: 800px;
+	  	}
+	  }
+	  @media only screen and (max-width: 600px) {
+	  	width: 90%;
 		video {
 	  		height: 500px;
 	  	}
@@ -46,10 +52,16 @@
   	@media only screen and (min-width: 1001px) and (max-width: 1300px) {
 		width: 46%
 	  }
-	  @media only screen and (max-width: 1000px) {
+	  @media only screen and (min-width: 601px) and (max-width: 1000px) {
 		width: 90%;
 		video {
-	  		height: 200px;
+	  		height: 400px;
+	  	}
+	  }
+	  @media only screen and (max-width: 600px) {
+	  	width: 90%;
+		video {
+	  		height: 225px;
 	  	}
 	  }
   }

@@ -11,6 +11,11 @@
   let lUrl = booster.asset + '?w=' + lWidth + '&h=' + lHeight + '&fit=crop&crop=faces&max-h=600';
 </script>
 
+<style>
+
+
+</style>
+
 {#if booster.from_strib === "TRUE"}
 
   {#if booster.shape === "Portrait"}

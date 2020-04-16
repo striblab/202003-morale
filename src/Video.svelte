@@ -13,8 +13,9 @@
 
       <div class="card strib {booster.type} portrait">
         <h5 class="stamp">{booster.timestamp} • <span class="green">Star Tribune</span></h5>
-        <video height="400" controls>
+        <video height="400" src="{booster.asset}" controls>
           <source src="{booster.asset}" type="video/mp4">
+          <source src="{booster.asset}" type="video/quicktime">
         </video>
         <div class="text">
           <p>{booster.story}</p>
@@ -28,8 +29,9 @@
       <div class="card strib {booster.type} landscape">
         <h5 class="stamp">{booster.timestamp} • <span class="green">Star Tribune</span></h5>
 
-        <video height="300" controls>
+        <video height="300" src="{booster.asset}" controls>
           <source src="{booster.asset}" type="video/mp4">
+            <source src="{booster.asset}" type="video/quicktime">
         </video>
         <div class="text">
           <p>{booster.story}</p>
@@ -48,6 +50,7 @@
         <h5 class="stamp">{booster.timestamp}</h5>
         <video height="400" controls>
           <source src="{booster.asset}" type="video/mp4">
+            <source src="{booster.asset}" type="video/quicktime">
         </video>
         <div class="text">
           <p>{booster.story}</p>
@@ -63,6 +66,7 @@
 
         <video height="300" controls>
           <source src="{booster.asset}" type="video/mp4">
+            <source src="{booster.asset}" type="video/quicktime">
         </video>
         <div class="text">
           <p>{booster.story}</p>

@@ -9,8 +9,8 @@ export let booster;
 <div class="card strib {booster.type}">
 	<div class="text">
 		<h5 class="stamp">{booster.timestamp} • <span class="green">Star Tribune</span></h5>
-		<p>{booster.story}</p>
-		<a href="{booster.url}" target="_blank"><h4 class="author">Read more</h4></a>
+		<p>{booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+        <h4 class="author">{booster.name}, Star Tribune</h4>
 	</div>
 </div>
 
@@ -20,7 +20,7 @@ export let booster;
 	<div class="text">
 		<h5 class="stamp">{booster.timestamp}</h5>
 		<p>{booster.story}</p>
-		<h4 class="author">— {booster.name}</h4>
+        <h4 class="author">{booster.name}, {booster.city}</h4>
 	</div>
 </div>
 

@@ -78,7 +78,7 @@ def sheet_to_json(obj, filename):
 
         if row[5].endswith('.jpg') or row[5].endswith('.jpeg') or row[5].endswith('.png') or row[5].endswith('JPG') or row[5].endswith('.PNG') or row[5].endswith('.JPEG'):
             type = 'photo'
-        elif row[5].endswith('MP4') or row[5].endswith('.mp4') or row[5].endswith('.mov'):
+        elif row[5].endswith('MP4') or row[5].endswith('.mp4') or row[5].endswith('.mov') or row[5].endswith('.MOV'):
             type = 'video'
         elif row[5].endswith('.mp3') or row[5].endswith('.wav'):
             type = 'audio'

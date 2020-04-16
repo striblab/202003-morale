@@ -75,32 +75,34 @@ def sheet_to_json(obj, filename):
         timestamp = parse(row[1]).strftime("%B %d")
         name = row[2]
         story = row[4]
+        city = row[5]
 
-        if row[5].endswith('.jpg') or row[5].endswith('.jpeg') or row[5].endswith('.png') or row[5].endswith('JPG') or row[5].endswith('.PNG') or row[5].endswith('.JPEG'):
+        if row[6].endswith('.jpg') or row[6].endswith('.jpeg') or row[6].endswith('.png') or row[6].endswith('JPG') or row[6].endswith('.PNG') or row[6].endswith('.JPEG'):
             type = 'photo'
-        elif row[5].endswith('MP4') or row[5].endswith('.mp4') or row[5].endswith('.mov'):
+        elif row[6].endswith('MP4') or row[6].endswith('.mp4') or row[6].endswith('.mov') or row[6].endswith('.MOV'):
             type = 'video'
-        elif row[5].endswith('.mp3') or row[5].endswith('.wav'):
+        elif row[6].endswith('.mp3') or row[6].endswith('.wav'):
             type = 'audio'
         else:
             type = 'text'
 
         if type == "photo":
-            asset = 'https://ststatic.stimg.co/news/projects/all/202003-morale/media/' + row[5]
-            asset2 = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[5]
+            # asset = 'https://ststatic.stimg.co/news/projects/all/202003-morale/media/' + row[6]
+            asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6]
         else:
-            asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[5]
+            asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6]
 
         if type == "photo":
-            shape = shape_detection(asset2, type)
+            shape = shape_detection(asset, type)
         elif type == "video":
             shape = shape_detection(asset, type)
         else:
             shape = ''
 
-        publish = row[6]
-        from_strib = row[8]
-        url = row[16]
+        publish = row[7]
+        from_strib = row[9]
+        url = row[17]
+
 
         if not row:
             continue
@@ -108,6 +110,7 @@ def sheet_to_json(obj, filename):
             obj_props = {
                 "timestamp": timestamp,
                 "name": name,
+                "city": city,
                 "story": story,
                 "asset": asset,
                 "type": type,

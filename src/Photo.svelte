@@ -21,22 +21,22 @@
   {#if booster.shape === "Portrait"}
 
     <div class="card strib {booster.type} portrait">
-      <h5 class="stamp">{booster.timestamp} • <span class="green">Star Tribune</span></h5>
-      <img src="{pUrl}" alt="Smile Minnesota photo"/>
+      <h5 class="stamp">{booster.timestamp}</h5>
+      <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
-        <p>{booster.story}</p>
-        <a href="{booster.url}" target="_blank"><h4 class="author">Read more</h4></a>
+        <p>{booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+        <h4 class="author">{booster.name}, Star Tribune</h4>
       </div>
     </div>
 
   {:else}
 
     <div class="card strib {booster.type} landscape">
-      <h5 class="stamp">{booster.timestamp} • <span class="green">Star Tribune</span></h5>
-      <img src="{lUrl}" alt="Smile Minnesota photo"/>
+      <h5 class="stamp">{booster.timestamp}</h5>
+       <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
-        <p>{booster.story}</p>
-        <a href="{booster.url}" target="_blank"><h4 class="author">Read more</h4></a>
+        <p>{booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+        <h4 class="author">{booster.name}, Star Tribune</h4>
       </div>
     </div>
 
@@ -50,10 +50,10 @@
 
     <div class="card {booster.type} portrait">
       <h5 class="stamp">{booster.timestamp}</h5>
-      <img src="{pUrl}" alt="Smile Minnesota photo"/>
+       <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
         <p>{booster.story}</p>
-        <h4 class="author">— {booster.name}</h4>
+        <h4 class="author">{booster.name}, {booster.city}</h4>
       </div>
     </div>
 
@@ -61,10 +61,10 @@
 
     <div class="card {booster.type} landscape">
       <h5 class="stamp">{booster.timestamp}</h5>
-      <img src="{lUrl}" alt="Smile Minnesota photo"/>
+       <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
         <p>{booster.story}</p>
-        <h4 class="author">— {booster.name}</h4>
+        <h4 class="author">{booster.name}, {booster.city}</h4>
       </div>
     </div>
 

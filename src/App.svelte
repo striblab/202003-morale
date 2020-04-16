@@ -15,11 +15,11 @@
 	let length;
 	let arr_slice_len;
 	let show_more = 'Show more';
-	arr_slice_len = 10;
+	arr_slice_len = 13;
 	let booster_length;
 
 	function handleButtonClick() {
-		arr_slice_len += 2;
+		arr_slice_len += 6;
 	}
 
 	$: {

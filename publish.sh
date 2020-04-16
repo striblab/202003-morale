@@ -12,6 +12,9 @@ pipenv run python ./src/data/zip_to_s3.py
 # move new contents to media directory
 cp -a ./src/data/files/. ./src/data/media
 
+# convert any .mov files to .mp34
+./convert.sh
+
 # sync contents of folders locally to s3
 aws s3 sync ./src/data/media s3://static.startribune.com/news/projects/all/202003-morale/media/
 

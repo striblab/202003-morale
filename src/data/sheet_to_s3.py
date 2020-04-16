@@ -90,7 +90,10 @@ def sheet_to_json(obj, filename):
             # asset = 'https://ststatic.stimg.co/news/projects/all/202003-morale/media/' + row[6]
             asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6]
         else:
-            asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6]
+            if row[6].endswith('.mov') or row[6].endswith('.MOV'):
+                asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6][:-4] + '.mp4'
+            else:
+                asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6]
 
         if type == "photo":
             shape = shape_detection(asset, type)

@@ -6,9 +6,7 @@ for f in $FILES
 do
   if [ ${f: -4} == ".MOV" ] || [ ${f: -4} == ".mov" ]
   then
-    echo "mov"
-  else
-    echo "not mov"
+    file=${f:0:${#f}-4}".mp4"
+    ffmpeg -i $f -vcodec h264 -acodec mp2 $file
   fi
-
 done

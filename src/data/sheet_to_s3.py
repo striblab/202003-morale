@@ -106,7 +106,7 @@ def sheet_to_json(obj, filename):
         url = row[17]
 
 
-        if not row:
+        if not row[7] and not row[8]:
             continue
         else:
             obj_props = {

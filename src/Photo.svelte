@@ -13,6 +13,9 @@
 
 <style>
 
+  .card img {
+    image-orientation: from-image;
+  }
 
 </style>
 

@@ -18,7 +18,7 @@
           <source src="{booster.asset}" type="video/quicktime">
         </video>
         <div class="text">
-          <p>{booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+          <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
         <h4 class="author">{booster.name}, Star Tribune</h4>
         </div>
 
@@ -34,7 +34,7 @@
             <source src="{booster.asset}" type="video/quicktime">
         </video>
         <div class="text">
-           <p>{booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+           <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
         <h4 class="author">{booster.name}, Star Tribune</h4>
         </div>
 
@@ -53,7 +53,7 @@
             <source src="{booster.asset}" type="video/quicktime">
         </video>
         <div class="text">
-          <p>{booster.story}</p>
+          <p>{@html booster.story}</p>
           <h4 class="author">{booster.name}, {booster.city}</h4>
         </div>
 
@@ -69,7 +69,7 @@
             <source src="{booster.asset}" type="video/quicktime">
         </video>
         <div class="text">
-          <p>{booster.story}</p>
+          <p>{@html booster.story}</p>
           <h4 class="author">— {booster.name}, {booster.city}</h4>
         </div>
 

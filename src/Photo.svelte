@@ -27,7 +27,7 @@
       <h5 class="stamp">{booster.timestamp}</h5>
       <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
-        <p>{booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+        <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
         <h4 class="author">{booster.name}, Star Tribune</h4>
       </div>
     </div>
@@ -38,7 +38,7 @@
       <h5 class="stamp">{booster.timestamp}</h5>
        <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
-        <p>{booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+        <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
         <h4 class="author">{booster.name}, Star Tribune</h4>
       </div>
     </div>
@@ -55,7 +55,7 @@
       <h5 class="stamp">{booster.timestamp}</h5>
        <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
-        <p>{booster.story}</p>
+        <p>{@html booster.story}</p>
         <h4 class="author">{booster.name}, {booster.city}</h4>
       </div>
     </div>
@@ -66,7 +66,7 @@
       <h5 class="stamp">{booster.timestamp}</h5>
        <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
-        <p>{booster.story}</p>
+        <p>{@html booster.story}</p>
         <h4 class="author">{booster.name}, {booster.city}</h4>
       </div>
     </div>

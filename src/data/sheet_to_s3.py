@@ -1,4 +1,4 @@
-import gspread, os.path, boto3, json, tempfile, requests, shutil, cv2
+import gspread, os.path, boto3, json, tempfile, requests, shutil, cv2, re
 from PIL import Image
 from datetime import datetime
 from dateutil.parser import parse
@@ -68,13 +68,18 @@ def shape_detection(url, type):
 
         return aspect
 
+def url_parse(string):
+    URL_REGEX = re.compile(r'''((?:mailto:|ftp://|http://|https://)[^ <>'"{}|\\^`[\]]*)''')
+
+    return URL_REGEX.sub(r'<a href="\1">\1</a>', string)
+
 
 def sheet_to_json(obj, filename):
     data_json = []
     for row in islice(obj, 1, None):
         timestamp = parse(row[1]).strftime("%B %d")
         name = row[2]
-        story = row[4]
+        story = url_parse(row[4])
         city = row[5]
 
         if row[6].endswith('.jpg') or row[6].endswith('.jpeg') or row[6].endswith('.png') or row[6].endswith('JPG') or row[6].endswith('.PNG') or row[6].endswith('.JPEG'):
@@ -95,9 +100,8 @@ def sheet_to_json(obj, filename):
             else:
                 asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6]
 
-        if not row[7] and not row[8]:
-            shape = ''
-        elif type == "photo":
+        if type == "photo":
+            print('fetching asset ' + asset)
             shape = shape_detection(asset, type)
         elif type == "video":
             shape = shape_detection(asset, type)

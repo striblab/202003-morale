@@ -71,7 +71,7 @@ def shape_detection(url, type):
 def url_parse(string):
     URL_REGEX = re.compile(r'''((?:mailto:|ftp://|http://|https://)[^ <>'"{}|\\^`[\]]*)''')
 
-    return URL_REGEX.sub(r'<a href="\1">\1</a>', string)
+    return URL_REGEX.sub(r'<a class="externalLink" href="\1">link</a>', string)
 
 
 def sheet_to_json(obj, filename):

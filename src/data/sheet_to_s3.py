@@ -32,41 +32,45 @@ def switch(i):
     }
     return switcher.get(i, "")
 
-def shape_detection(url, type):
-    if type == 'photo':
-        response = requests.get(url, stream=True)
-        tmp = tempfile.TemporaryFile()
-        tmp = response.raw
-
-        im = Image.open(tmp)
-
-        if im.width > im.height:
-            aspect = 'Landscape'
-        elif im.height > im.width:
-            aspect = 'Portrait'
-        elif im.height == im.width:
-            aspect = 'Landscape'
-
-        tmp.close()
-
+def shape_detection(url, type, story):
+    if len(story) > 350:
+        aspect = 'Landscape'
         return aspect
-    elif type == 'video':
-        vcap = cv2.VideoCapture(url) # 0=camera
+    else:
+        if type == 'photo':
+            response = requests.get(url, stream=True)
+            tmp = tempfile.TemporaryFile()
+            tmp = response.raw
 
-        width  = vcap.get(cv2.CAP_PROP_FRAME_WIDTH)
-        height = vcap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+            im = Image.open(tmp)
 
-        if width > height:
-            aspect = 'Landscape'
-        elif height > width:
-            aspect = 'Portrait'
-        elif height == width:
-            aspect = 'Landscape'
+            if im.width > im.height:
+                aspect = 'Landscape'
+            elif im.height > im.width:
+                aspect = 'Portrait'
+            elif im.height == im.width:
+                aspect = 'Landscape'
 
-        vcap.release()
-        cv2.destroyAllWindows()
+            tmp.close()
 
-        return aspect
+            return aspect
+        elif type == 'video':
+            vcap = cv2.VideoCapture(url) # 0=camera
+
+            width  = vcap.get(cv2.CAP_PROP_FRAME_WIDTH)
+            height = vcap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+
+            if width > height:
+                aspect = 'Landscape'
+            elif height > width:
+                aspect = 'Portrait'
+            elif height == width:
+                aspect = 'Landscape'
+
+            vcap.release()
+            cv2.destroyAllWindows()
+
+            return aspect
 
 def url_parse(string):
     URL_REGEX = re.compile(r'''((?:mailto:|ftp://|http://|https://)[^ <>'"{}|\\^`[\]]*)''')
@@ -102,11 +106,12 @@ def sheet_to_json(obj, filename):
 
         if type == "photo":
             print('fetching asset ' + asset)
-            shape = shape_detection(asset, type)
+            shape = shape_detection(asset, type, story)
         elif type == "video":
-            shape = shape_detection(asset, type)
+            print('fetching asset ' + asset)
+            shape = shape_detection(asset, type, story)
         else:
-            shape = ''
+            shape = shape_detection(asset, type, story)
 
         publish = row[7]
         from_strib = row[9]

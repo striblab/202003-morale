@@ -7,6 +7,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_S3_BUCKET = os.environ.get('AWS_S3_BUCKET', '')
@@ -94,7 +95,9 @@ def sheet_to_json(obj, filename):
             else:
                 asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6]
 
-        if type == "photo":
+        if not row[7] and not row[8]:
+            shape = ''
+        elif type == "photo":
             shape = shape_detection(asset, type)
         elif type == "video":
             shape = shape_detection(asset, type)

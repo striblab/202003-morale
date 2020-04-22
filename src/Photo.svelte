@@ -13,10 +13,6 @@
 
 <style>
 
-  .card img {
-    image-orientation: from-image;
-  }
-
 </style>
 
 {#if booster.from_strib === "TRUE"}

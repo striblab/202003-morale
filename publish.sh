@@ -12,7 +12,7 @@ pipenv run python ./src/data/zip_to_s3.py
 # move new contents to media directory
 cp -a ./src/data/files/. ./src/data/media
 
-# convert any .mov files to .mp34
+# convert any .mov files to .mp4
 ./convert.sh
 
 # deal with exif data

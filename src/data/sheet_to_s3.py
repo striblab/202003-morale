@@ -97,7 +97,7 @@ def sheet_to_json(obj, filename):
 
         if type == "photo":
             # asset = 'https://ststatic.stimg.co/news/projects/all/202003-morale/media/' + row[6]
-            asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6]
+            asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6].replace(" ", "_")
         else:
             if row[6].endswith('.mov') or row[6].endswith('.MOV'):
                 asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6][:-4] + '.mp4'

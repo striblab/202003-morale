@@ -38,6 +38,13 @@
 
 	}
 
+	const Masonry = require('masonry-layout');
+
+	var msnry = new Masonry( '.grid', {
+	  columnWidth: 200,
+	  itemSelector: '.card'
+	});
+
 </script>
 
 <div class="proj-container">

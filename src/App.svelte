@@ -8,6 +8,8 @@
 	import Audio from './Audio.svelte';
   import json from './data/data.json';
 
+	const Masonry = require('masonry-layout');
+
 	// props
 	export let boosters;
 
@@ -38,12 +40,14 @@
 
 	}
 
-	const Masonry = require('masonry-layout');
-
-	var msnry = new Masonry( '.grid', {
-	  columnWidth: 200,
-	  itemSelector: '.card'
+	onMount(async () => {
+		var msnry = new Masonry( '.cards-grid', {
+		  columnWidth: 200,
+		  itemSelector: '.card'
+		});
 	});
+
+
 
 </script>
 

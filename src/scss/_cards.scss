@@ -1,6 +1,7 @@
 .card {
   /*max-width: 300px;*/
   /*margin-bottom: 30px;*/
+  display: block;
   padding: 0px;
   background: white;
   border: 0.5px solid #CACFD2;
@@ -10,15 +11,16 @@
   margin-right: 1%;
   margin-bottom: 1%;
   margin-top: 1%;
-  width: 20%;
-  @media only screen and (min-width: 1001px) and (max-width: 1300px) {
-	width: 22%
-  }
+  width: 23%;
+  height: 300px ;
+  /*float: right;*/
+  clear: both;
   @media only screen and (max-width: 1000px) {
 	width: 90%;
-	margin-bottom: 5%;
+	margin-bottom: 40px;
 	margin-left: 5%;
 	margin-right: 5%;
+ 
   }
   &.strib {
     border: 0.5px solid #00824a;
@@ -32,10 +34,11 @@
     }
   }
   &.portrait {
-  	width: 20%;
-  	@media only screen and (min-width: 1001px) and (max-width: 1300px) {
+  	width: 23%;
+    height: calc(600px + 1%);
+  	/*@media only screen and (min-width: 1001px) and (max-width: 1300px) {
 		width: 22%
-	  }
+	  }*/
 	  @media only screen and (min-width: 601px) and (max-width: 1000px) {
 		width: 90%;
 		video {
@@ -50,10 +53,11 @@
 	  }
   }
   &.landscape {
-  	width: 31%;
-  	@media only screen and (min-width: 1001px) and (max-width: 1300px) {
-		width: 46%
-	  }
+  	width: 48%;
+    height: calc(600px + 1%);
+  	/*@media only screen and (min-width: 1001px) and (max-width: 1300px) {
+		width: 50%
+	  }*/
 	  @media only screen and (min-width: 601px) and (max-width: 1000px) {
 		width: 90%;
 		video {
@@ -70,14 +74,14 @@
   &.photo {
   	&.portrait {
   		div.photograph {
-	  		height: 350px;
+	  		height:400px;
 	  		@media only screen and (max-width: 600px) {
 				height: 350px;
 		    }
 	  	}
   	}
   	div.photograph {
-  		height: 300px;
+  		height: 400px;
   		@media only screen and (max-width: 600px) {
 			height: 200px;
 	    }

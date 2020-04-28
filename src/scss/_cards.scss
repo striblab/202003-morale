@@ -108,6 +108,20 @@
 		font-weight: normal;
 	}
   }
+  a.externalLink {
+    color: #333;
+    text-decoration: underline;
+    &:after {
+      content: '';
+      height: 13px;
+      width: 13px;
+      background-image: url(https://www.startribune.com/static/img/icons/icn-new-page-60-60.svg);
+      background-size: cover;
+      display: inline-block;
+      margin-left: 5px;
+      margin-bottom: -2px;
+    }
+  }
   .text {
   	padding: 40px;
   	@media only screen and (max-width: 1000px) {

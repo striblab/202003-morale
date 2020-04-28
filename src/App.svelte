@@ -24,6 +24,11 @@
 		arr_slice_len += 6;
 	}
 
+	function close() {
+		var box = document.querySelector('.lightbox');
+		box.style.display = 'none'
+	}
+
 	$: {
 
 		booster_length = json.filter(function(d) {
@@ -69,6 +74,11 @@
 				<Audio {booster} />
 			{/if}
 		{/each}
+	</div>
+
+	<div class="lightbox" style="display:none;">
+		<span class="close cursor" on:click={close}>&times;</span>
+		HELLO WORLD
 	</div>
 
 	{#if arr_slice_len < booster_length}

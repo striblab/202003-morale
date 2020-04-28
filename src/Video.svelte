@@ -87,7 +87,7 @@
           </video>
           <div class="text">
             <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
-          <h4 class="author">{booster.name}, Star Tribune</h4>
+          <h4 class="author">{booster.name}, {booster.city}</h4>
           </div>
         </div>
 
@@ -101,7 +101,7 @@
           </video>
           <div class="text">
             <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
-          <h4 class="author">{booster.name}, Star Tribune</h4>
+          <h4 class="author">{booster.name}, {booster.city}</h4>
           </div>
         </div>
 
@@ -118,7 +118,7 @@
           </video>
           <div class="text">
              <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
-          <h4 class="author">{booster.name}, Star Tribune</h4>
+          <h4 class="author">{booster.name}, {booster.city}</h4>
           </div>
 
         </div>
@@ -131,7 +131,7 @@
           </video>
           <div class="text">
              <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
-          <h4 class="author">{booster.name}, Star Tribune</h4>
+          <h4 class="author">{booster.name}, {booster.city}</h4>
           </div>
 
         </div>

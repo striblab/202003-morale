@@ -11,7 +11,11 @@
 
     {#if booster.shape === "Portrait"}
 
+      {#if booster.long === "TRUE"}
+      <div class="card strib {booster.type} portrait long">
+      {:else}
       <div class="card strib {booster.type} portrait">
+      {/if}
         <h5 class="stamp">{booster.timestamp}</h5>
         <video height="400" src="{booster.asset}" controls>
           <source src="{booster.asset}" type="video/mp4">
@@ -26,7 +30,11 @@
 
     {:else}
 
+      {#if booster.long === "TRUE"}
+      <div class="card strib {booster.type} landscape long">
+      {:else}
       <div class="card strib {booster.type} landscape">
+      {/if}
         <h5 class="stamp">{booster.timestamp}</h5>
 
         <video height="300" src="{booster.asset}" controls>
@@ -46,7 +54,11 @@
 
     {#if booster.shape === "Portrait"}
 
-      <div class="card {booster.type} portrait">
+      {#if booster.long === "TRUE"}
+      <div class="card strib {booster.type} portrait long">
+      {:else}
+      <div class="card strib {booster.type} portrait">
+      {/if}
         <h5 class="stamp">{booster.timestamp}</h5>
         <video height="400" controls>
           <source src="{booster.asset}" type="video/mp4">
@@ -61,7 +73,11 @@
 
     {:else}
 
-      <div class="card {booster.type} landscape">
+      {#if booster.long === "TRUE"}
+      <div class="card strib {booster.type} landscape long">
+      {:else}
+      <div class="card strib {booster.type} landscape">
+      {/if}
           <h5 class="stamp">{booster.timestamp}</h5>
 
         <video height="300" controls>

@@ -32,12 +32,8 @@ def switch(i):
     }
     return switcher.get(i, "")
 
-def shape_detection(url, type, story):
-    if len(story) > 350:
-        aspect = 'Landscape'
-        return aspect
-    else:
-        if type == 'photo':
+def shape_detection(url, type):
+    if type == 'photo':
             response = requests.get(url, stream=True)
             tmp = tempfile.TemporaryFile()
             tmp = response.raw
@@ -54,7 +50,7 @@ def shape_detection(url, type, story):
             tmp.close()
 
             return aspect
-        elif type == 'video':
+    elif type == 'video':
             vcap = cv2.VideoCapture(url) # 0=camera
 
             width  = vcap.get(cv2.CAP_PROP_FRAME_WIDTH)
@@ -81,41 +77,49 @@ def url_parse(string):
 def sheet_to_json(obj, filename):
     data_json = []
     for row in islice(obj, 1, None):
-        timestamp = parse(row[1]).strftime("%B %d")
-        name = row[2]
-        story = url_parse(row[4])
-        city = row[5]
-
-        if row[6].endswith('.jpg') or row[6].endswith('.jpeg') or row[6].endswith('.png') or row[6].endswith('JPG') or row[6].endswith('.PNG') or row[6].endswith('.JPEG'):
-            type = 'photo'
-        elif row[6].endswith('MP4') or row[6].endswith('.mp4') or row[6].endswith('.mov') or row[6].endswith('.MOV'):
-            type = 'video'
-        elif row[6].endswith('.mp3') or row[6].endswith('.wav'):
-            type = 'audio'
+        if not row[7] and not row[8]:
+            continue
         else:
-            type = 'text'
+            timestamp = parse(row[1]).strftime("%B %d")
+            name = row[2]
+            story = url_parse(row[4])
+            city = row[5]
 
-        if type == "photo":
-            # asset = 'https://ststatic.stimg.co/news/projects/all/202003-morale/media/' + row[6]
-            asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6].replace(" ", "_")
-        else:
-            if row[6].endswith('.mov') or row[6].endswith('.MOV'):
-                asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6][:-4] + '.mp4'
+            if row[6].endswith('.jpg') or row[6].endswith('.jpeg') or row[6].endswith('.png') or row[6].endswith('JPG') or row[6].endswith('.PNG') or row[6].endswith('.JPEG'):
+                type = 'photo'
+            elif row[6].endswith('MP4') or row[6].endswith('.mp4') or row[6].endswith('.mov') or row[6].endswith('.MOV'):
+                type = 'video'
+            elif row[6].endswith('.mp3') or row[6].endswith('.wav'):
+                type = 'audio'
             else:
-                asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6]
+                type = 'text'
 
-        if type == "photo":
-            print('fetching asset ' + asset)
-            shape = shape_detection(asset, type, story)
-        elif type == "video":
-            print('fetching asset ' + asset)
-            shape = shape_detection(asset, type, story)
-        else:
-            shape = shape_detection(asset, type, story)
+            if type == "photo":
+                # asset = 'https://ststatic.stimg.co/news/projects/all/202003-morale/media/' + row[6]
+                asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6].replace(" ", "_")
+            else:
+                if row[6].endswith('.mov') or row[6].endswith('.MOV'):
+                    asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6][:-4] + '.mp4'
+                else:
+                    asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6]
 
-        publish = row[7]
-        from_strib = row[9]
-        url = row[17]
+            if type == "photo":
+                print('fetching asset ' + asset)
+                shape = shape_detection(asset, type)
+            elif type == "video":
+                print('fetching asset ' + asset)
+                shape = shape_detection(asset, type)
+            else:
+                shape = shape_detection(asset, type)
+
+            if len(story) > 350:
+                long = "TRUE"
+            else:
+                long = "FALSE"
+
+            publish = row[7]
+            from_strib = row[9]
+            url = row[17]
 
 
         if not row[7] and not row[8]:
@@ -129,6 +133,7 @@ def sheet_to_json(obj, filename):
                 "asset": asset,
                 "type": type,
                 "shape": shape,
+                "long": long,
                 "publish": publish,
                 "from_strib": from_strib,
                 "url": url

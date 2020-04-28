@@ -19,7 +19,11 @@
 
   {#if booster.shape === "Portrait"}
 
+    {#if booster.long === "TRUE"}
+    <div class="card strib {booster.type} portrait long">
+    {:else}
     <div class="card strib {booster.type} portrait">
+    {/if}
       <h5 class="stamp">{booster.timestamp}</h5>
       <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
@@ -29,8 +33,11 @@
     </div>
 
   {:else}
-
+    {#if booster.long === "TRUE"}
+    <div class="card strib {booster.type} landscape long">
+    {:else}
     <div class="card strib {booster.type} landscape">
+    {/if}
       <h5 class="stamp">{booster.timestamp}</h5>
        <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
@@ -47,7 +54,11 @@
 
   {#if booster.shape === "Portrait"}
 
-    <div class="card {booster.type} portrait">
+    {#if booster.long === "TRUE"}
+    <div class="card strib {booster.type} portrait long">
+    {:else}
+    <div class="card strib {booster.type} portrait">
+    {/if}
       <h5 class="stamp">{booster.timestamp}</h5>
        <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
@@ -58,7 +69,11 @@
 
   {:else}
 
-    <div class="card {booster.type} landscape">
+    {#if booster.long === "TRUE"}
+    <div class="card strib {booster.type} landscape long">
+    {:else}
+    <div class="card strib {booster.type} landscape">
+    {/if}
       <h5 class="stamp">{booster.timestamp}</h5>
        <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">

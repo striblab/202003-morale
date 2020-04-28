@@ -6,9 +6,9 @@ export let booster;
 
 {#if booster.from_strib === "TRUE"}
 
-{#if booster.shape === "Landscape"}
+{#if booster.long === "TRUE"}
 
-<div class="card strib {booster.type} landscape">
+<div class="card strib {booster.type} long">
 	<div class="text">
 		<h5 class="stamp">{booster.timestamp} • <span class="green">Star Tribune</span></h5>
 		<p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
@@ -30,9 +30,9 @@ export let booster;
 
 {:else}
 
-{#if booster.shape === "Landscape"}
+{#if booster.long === "TRUE"}
 
-<div class="card {booster.type} landscape">
+<div class="card {booster.type} long">
 	<div class="text">
 		<h5 class="stamp">{booster.timestamp}</h5>
 			<p>{@html booster.story}</p>

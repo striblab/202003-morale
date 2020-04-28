@@ -1,4 +1,4 @@
-import gspread, os.path, boto3, json, tempfile, requests, shutil, cv2
+import gspread, os.path, boto3, json, tempfile, requests, shutil, cv2, re
 from PIL import Image
 from datetime import datetime
 from dateutil.parser import parse
@@ -7,6 +7,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_S3_BUCKET = os.environ.get('AWS_S3_BUCKET', '')
@@ -31,41 +32,50 @@ def switch(i):
     }
     return switcher.get(i, "")
 
-def shape_detection(url, type):
-    if type == 'photo':
-        response = requests.get(url, stream=True)
-        tmp = tempfile.TemporaryFile()
-        tmp = response.raw
-
-        im = Image.open(tmp)
-
-        if im.width > im.height:
-            aspect = 'Landscape'
-        elif im.height > im.width:
-            aspect = 'Portrait'
-        elif im.height == im.width:
-            aspect = 'Landscape'
-
-        tmp.close()
-
+def shape_detection(url, type, story):
+    if len(story) > 350:
+        aspect = 'Landscape'
         return aspect
-    elif type == 'video':
-        vcap = cv2.VideoCapture(url) # 0=camera
+    else:
+        if type == 'photo':
+            response = requests.get(url, stream=True)
+            tmp = tempfile.TemporaryFile()
+            tmp = response.raw
 
-        width  = vcap.get(cv2.CAP_PROP_FRAME_WIDTH)
-        height = vcap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+            im = Image.open(tmp)
 
-        if width > height:
-            aspect = 'Landscape'
-        elif height > width:
-            aspect = 'Portrait'
-        elif height == width:
-            aspect = 'Landscape'
+            if im.width > im.height:
+                aspect = 'Landscape'
+            elif im.height > im.width:
+                aspect = 'Portrait'
+            elif im.height == im.width:
+                aspect = 'Landscape'
 
-        vcap.release()
-        cv2.destroyAllWindows()
+            tmp.close()
 
-        return aspect
+            return aspect
+        elif type == 'video':
+            vcap = cv2.VideoCapture(url) # 0=camera
+
+            width  = vcap.get(cv2.CAP_PROP_FRAME_WIDTH)
+            height = vcap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+
+            if width > height:
+                aspect = 'Landscape'
+            elif height > width:
+                aspect = 'Portrait'
+            elif height == width:
+                aspect = 'Landscape'
+
+            vcap.release()
+            cv2.destroyAllWindows()
+
+            return aspect
+
+def url_parse(string):
+    URL_REGEX = re.compile(r'''((?:mailto:|ftp://|http://|https://)[^ <>'"{}|\\^`[\]]*)''')
+
+    return URL_REGEX.sub(r'<a class="externalLink" href="\1">Link</a>', string)
 
 
 def sheet_to_json(obj, filename):
@@ -73,7 +83,7 @@ def sheet_to_json(obj, filename):
     for row in islice(obj, 1, None):
         timestamp = parse(row[1]).strftime("%B %d")
         name = row[2]
-        story = row[4]
+        story = url_parse(row[4])
         city = row[5]
 
         if row[6].endswith('.jpg') or row[6].endswith('.jpeg') or row[6].endswith('.png') or row[6].endswith('JPG') or row[6].endswith('.PNG') or row[6].endswith('.JPEG'):
@@ -87,7 +97,7 @@ def sheet_to_json(obj, filename):
 
         if type == "photo":
             # asset = 'https://ststatic.stimg.co/news/projects/all/202003-morale/media/' + row[6]
-            asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6]
+            asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6].replace(" ", "_")
         else:
             if row[6].endswith('.mov') or row[6].endswith('.MOV'):
                 asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6][:-4] + '.mp4'
@@ -95,18 +105,20 @@ def sheet_to_json(obj, filename):
                 asset = 'https://static.startribune.com/news/projects/all/202003-morale/media/' + row[6]
 
         if type == "photo":
-            shape = shape_detection(asset, type)
+            print('fetching asset ' + asset)
+            shape = shape_detection(asset, type, story)
         elif type == "video":
-            shape = shape_detection(asset, type)
+            print('fetching asset ' + asset)
+            shape = shape_detection(asset, type, story)
         else:
-            shape = ''
+            shape = shape_detection(asset, type, story)
 
         publish = row[7]
         from_strib = row[9]
         url = row[17]
 
 
-        if not row:
+        if not row[7] and not row[8]:
             continue
         else:
             obj_props = {

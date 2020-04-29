@@ -1,14 +1,25 @@
 <script>
-
-	import { onMount } from 'svelte';
+	import { writable } from 'svelte/store';
+	import { onMount, onDestroy } from 'svelte';
 	import { intcomma } from 'journalize';
   import Photo from './Photo.svelte';
 	import Text from './Text.svelte';
 	import Video from './Video.svelte';
 	import Audio from './Audio.svelte';
+	import Lightbox from './Lightbox.svelte';
   import json from './data/data.json';
 
 	const Masonry = require('masonry-layout');
+
+	const store = writable()
+
+	let lightbox_booster;
+
+	$: {
+		store.subscribe(value => {
+			lightbox_booster = value;
+		})
+	}
 
 	// props
 	export let boosters;
@@ -27,6 +38,8 @@
 	function close() {
 		var box = document.querySelector('.lightbox');
 		box.style.display = 'none'
+
+		store.set()
 	}
 
 	$: {
@@ -65,20 +78,24 @@
 	<div class="cards-grid">
 		{#each boosters as booster}
 			{#if booster.type === 'text'}
-				<Text {booster} />
+				<Text {booster} {store}/>
 			{:else if booster.type === 'photo'}
-				<Photo {booster} />
+				<Photo {booster} {store} />
 			{:else if booster.type === 'video'}
-				<Video {booster} />
+				<Video {booster} {store}/>
 			{:else if booster.type === 'audio'}
-				<Audio {booster} />
+				<Audio {booster} {store}/>
 			{/if}
 		{/each}
 	</div>
 
 	<div class="lightbox" style="display:none;">
 		<span class="close cursor" on:click={close}>&times;</span>
-		HELLO WORLD
+		{#if lightbox_booster}
+		<div class="lightboxWrapper">
+			<Lightbox {lightbox_booster} {store}/>
+		</div>
+		{/if}
 	</div>
 
 	{#if arr_slice_len < booster_length}

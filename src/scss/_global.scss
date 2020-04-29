@@ -236,4 +236,29 @@ button:focus {
 	  text-decoration: none;
 	  cursor: pointer;
 	}
+
+	.lightboxWrapper {
+
+		.card {
+	    	width: 100%;
+		}
+
+		display: inline-block;
+		position: absolute;
+		left: 50%;
+		-webkit-transform: translateX(-50%);
+		transform: translateX(-50%)
+
+
+	}
+}
+
+.readMore p {
+	display: inline-block;
+	color: #036
+}
+
+.readMore p:hover {
+	cursor: pointer;
+	text-decoration: underline;
 }

@@ -60,20 +60,20 @@
 
 	}
 
-	onMount(async () => {
-		var msnry = new Masonry( '.cards-grid', {
-		  columnWidth: '.card.portrait',
-		  itemSelector: '.card',
-		  gutter: 0,
-		  horizontalOrder: true,
-		  percentPosition: true,
-		});
+	// onMount(async () => {
+	// 	var msnry = new Masonry( '.cards-grid', {
+	// 	  columnWidth: '.card.portrait',
+	// 	  itemSelector: '.card',
+	// 	  gutter: 0,
+	// 	  horizontalOrder: true,
+	// 	  percentPosition: true,
+	// 	});
 
-		imagesLoaded( '.cards-grid' ).on( 'progress', function() {
-		  // layout Masonry after each image loads
-		  msnry.layout();
-		});
-	});
+	// 	imagesLoaded( '.cards-grid' ).on( 'progress', function() {
+	// 	  // layout Masonry after each image loads
+	// 	  msnry.layout();
+	// 	});
+	// });
 
 
 

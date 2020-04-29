@@ -8,7 +8,7 @@ function shorten(string) {
 
 	trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
 
-	trimmedString = trimmedString + " (...)"
+	trimmedString = trimmedString
 
 	return trimmedString
 }
@@ -30,7 +30,7 @@ function open(booster) {
 <div class="card strib {booster.type} long">
 	<div class="text">
 		<h5 class="stamp">{booster.timestamp} • <span class="green">Star Tribune</span></h5>
-		<p>{@html shorten(booster.story)} <a href="{booster.url}" target="_blank">Read more</a></p>
+		<p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span> <a href="{booster.url}" target="_blank">Read more</a></p>
         <h4 class="author">{booster.name}, Star Tribune</h4>
 	</div>
 </div>
@@ -54,10 +54,7 @@ function open(booster) {
 <div class="card {booster.type} long">
 	<div class="text">
 		<h5 class="stamp">{booster.timestamp}</h5>
-			<p>{@html shorten(booster.story)}</p>
-			<div class="readMore" on:click={open(booster)}>
-        <p>Read more</p>
-      </div>
+			<p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
       <h4 class="author">{booster.name}, {booster.city}</h4>
 	</div>
 </div>

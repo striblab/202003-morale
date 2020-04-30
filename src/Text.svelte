@@ -1,5 +1,5 @@
 <script>
-
+export let window_width;
 export let booster;
 export let store;
 
@@ -30,7 +30,12 @@ function open(booster) {
 <div class="card strib {booster.type} long">
 	<div class="text">
 		<h5 class="stamp">{booster.timestamp} • <span class="green">Star Tribune</span></h5>
-		<p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span> <a href="{booster.url}" target="_blank">Read more</a></p>
+		{#if window_width > 900}
+			<p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span> <a href="{booster.url}" target="_blank">Read more</a></p>
+			<p><a href="{booster.url}" target="_blank">Read more</a></p>
+		{:else}
+			<p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+		{/if}
         <h4 class="author">{booster.name}, Star Tribune</h4>
 	</div>
 </div>
@@ -54,7 +59,11 @@ function open(booster) {
 <div class="card {booster.type} long">
 	<div class="text">
 		<h5 class="stamp">{booster.timestamp}</h5>
+		{#if window_width > 900}
 			<p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
+		{:else}
+			<p>{@html booster.story}</p>
+		{/if}
       <h4 class="author">{booster.name}, {booster.city}</h4>
 	</div>
 </div>

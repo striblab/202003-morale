@@ -1,6 +1,7 @@
 <script>
   export let booster;
   export let store;
+  export let window_width;
 
   let lightbox_booster
 
@@ -32,11 +33,8 @@
 
     return trimmedString
   }
+
 </script>
-
-<style>
-
-</style>
 
 {#if booster.from_strib === "TRUE"}
 
@@ -47,7 +45,11 @@
         <h5 class="stamp">{booster.timestamp}</h5>
         <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
         <div class="text">
-          <p>{@html shorten(booster.story)} <a href="{booster.url}" target="_blank">Read more</a></p>
+          {#if window_width > 900}
+            <p>{@html shorten(booster.story)} <a href="{booster.url}" target="_blank">Read more</a></p>
+          {:else}
+            <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+          {/if}
           <h4 class="author">{booster.name}, Star Tribune</h4>
         </div>
       </div>
@@ -69,7 +71,11 @@
       <h5 class="stamp">{booster.timestamp}</h5>
        <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
-        <p>{@html shorten(booster.story)} <a href="{booster.url}" target="_blank">Read more</a></p>
+        {#if window_width > 900}
+          <p>{@html shorten(booster.story)} <a href="{booster.url}" target="_blank">Read more</a></p>
+        {:else}
+          <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+        {/if}
         <h4 class="author">{booster.name}, Star Tribune</h4>
       </div>
     </div>
@@ -96,8 +102,12 @@
       <h5 class="stamp">{booster.timestamp}</h5>
       <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
-        <p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
-        
+
+        {#if window_width > 900}
+          <p>{@html shorten(booster.story)} <p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
+        {:else}
+          <p>{@html booster.story}</p>
+        {/if}
         <h4 class="author">{booster.name}, {booster.city}</h4>
       </div>
 
@@ -120,7 +130,11 @@
     <h5 class="stamp">{booster.timestamp}</h5>
      <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
     <div class="text">
-      <p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
+      {#if window_width > 900}
+        <p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
+      {:else}
+        <p>{@html booster.story}</p>
+      {/if}
       <h4 class="author">{booster.name}, {booster.city}</h4>
     </div>
   </div>

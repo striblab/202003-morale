@@ -1,4 +1,5 @@
 <script>
+	import { watchResize } from "svelte-watch-resize";
 	import { writable } from 'svelte/store';
 	import { onMount, onDestroy } from 'svelte';
 	import { intcomma } from 'journalize';
@@ -25,6 +26,7 @@
 	export let boosters;
 
 	// local vars
+	let window_width;
 	let length;
 	let arr_slice_len;
 	let show_more = 'Show more';
@@ -40,6 +42,11 @@
 		box.style.display = 'none'
 
 		store.set()
+	}
+
+	function resize() {
+		let screen = window.innerWidth
+		console.log(screen)
 	}
 
 	$: {
@@ -69,6 +76,8 @@
 
 </script>
 
+<svelte:window bind:innerWidth={window_width} />
+
 <div class="proj-container">
 
 	<div class="intro-text">
@@ -78,11 +87,11 @@
 	<div class="cards-grid">
 		{#each boosters as booster}
 			{#if booster.type === 'text'}
-				<Text {booster} {store}/>
+				<Text {booster} {store} {window_width}/>
 			{:else if booster.type === 'photo'}
-				<Photo {booster} {store} />
+				<Photo {booster} {store} {window_width}/>
 			{:else if booster.type === 'video'}
-				<Video {booster} {store}/>
+				<Video {booster} {store} {window_width}/>
 			{:else if booster.type === 'audio'}
 				<Audio {booster} {store}/>
 			{/if}

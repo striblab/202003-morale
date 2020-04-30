@@ -33,6 +33,7 @@
   "dependencies": {
     "@babel/runtime": "^7.6.3",
     "@babel/runtime-corejs3": "^7.6.3",
+    "imagesloaded": "^4.1.4",
     "journalize": "^2.2.1",
     "masonry-layout": "^4.2.2",
     "promise-polyfill": "^8.1.3",

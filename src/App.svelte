@@ -3,14 +3,16 @@
 	import { writable } from 'svelte/store';
 	import { onMount, onDestroy } from 'svelte';
 	import { intcomma } from 'journalize';
-  import Photo from './Photo.svelte';
+  	import Photo from './Photo.svelte';
 	import Text from './Text.svelte';
 	import Video from './Video.svelte';
 	import Audio from './Audio.svelte';
 	import Lightbox from './Lightbox.svelte';
-  import json from './data/data.json';
+  	import json from './data/data.json';
 
 	const Masonry = require('masonry-layout');
+
+	const imagesLoaded = require('imagesloaded');
 
 	const store = writable()
 
@@ -65,12 +67,20 @@
 
 	}
 
-	onMount(async () => {
-		var msnry = new Masonry( '.cards-grid', {
-		  columnWidth: 200,
-		  itemSelector: '.card'
-		});
-	});
+	// onMount(async () => {
+	// 	var msnry = new Masonry( '.cards-grid', {
+	// 	  columnWidth: '.card.portrait',
+	// 	  itemSelector: '.card',
+	// 	  gutter: 0,
+	// 	  horizontalOrder: true,
+	// 	  percentPosition: true,
+	// 	});
+
+	// 	imagesLoaded( '.cards-grid' ).on( 'progress', function() {
+	// 	  // layout Masonry after each image loads
+	// 	  msnry.layout();
+	// 	});
+	// });
 
 
 

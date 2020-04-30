@@ -102,13 +102,11 @@
       <h5 class="stamp">{booster.timestamp}</h5>
       <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
+
         {#if window_width > 900}
-        <p>{@html shorten(booster.story)}</p>
-        <div class="readMore" on:click={open(booster)}>
-    			<p>Read more</p>
-    		</div>
+          <p>{@html shorten(booster.story)} <p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
         {:else}
-        <p>{@html booster.story}</p>
+          <p>{@html booster.story}</p>
         {/if}
         <h4 class="author">{booster.name}, {booster.city}</h4>
       </div>
@@ -119,7 +117,7 @@
       <h5 class="stamp">{booster.timestamp}</h5>
       <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
-        <p>{@html booster.story}</p>
+        <p class="story">{@html booster.story}</p>
         <h4 class="author">{booster.name}, {booster.city}</h4>
       </div>
     </div>
@@ -133,12 +131,9 @@
      <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
     <div class="text">
       {#if window_width > 900}
-      <p>{@html shorten(booster.story)}</p>
-      <div class="readMore" on:click={open(booster)}>
-        <p>Read more</p>
-      </div>
+        <p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
       {:else}
-      <p>{@html booster.story}</p>
+        <p>{@html booster.story}</p>
       {/if}
       <h4 class="author">{booster.name}, {booster.city}</h4>
     </div>
@@ -148,12 +143,11 @@
     <h5 class="stamp">{booster.timestamp}</h5>
      <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
     <div class="text">
-      <p>{@html booster.story}</p>
+      <p class="story">{@html booster.story}</p>
       <h4 class="author">{booster.name}, {booster.city}</h4>
     </div>
   </div>
   {/if}
 
 {/if}
-
 {/if}

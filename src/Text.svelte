@@ -8,7 +8,7 @@ function shorten(string) {
 
 	trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
 
-	trimmedString = trimmedString + " (...)"
+	trimmedString = trimmedString
 
 	return trimmedString
 }
@@ -31,7 +31,8 @@ function open(booster) {
 	<div class="text">
 		<h5 class="stamp">{booster.timestamp} • <span class="green">Star Tribune</span></h5>
 		{#if window_width > 900}
-			<p>{@html shorten(booster.story)} <a href="{booster.url}" target="_blank">Read more</a></p>
+			<p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span> <a href="{booster.url}" target="_blank">Read more</a></p>
+			<p><a href="{booster.url}" target="_blank">Read more</a></p>
 		{:else}
 			<p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
 		{/if}
@@ -59,12 +60,9 @@ function open(booster) {
 	<div class="text">
 		<h5 class="stamp">{booster.timestamp}</h5>
 		{#if window_width > 900}
-		<p>{@html shorten(booster.story)}</p>
-		<div class="readMore" on:click={open(booster)}>
-			<p>Read more</p>
-		</div>
+			<p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
 		{:else}
-		<p>{@html booster.story}</p>
+			<p>{@html booster.story}</p>
 		{/if}
       <h4 class="author">{booster.name}, {booster.city}</h4>
 	</div>

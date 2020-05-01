@@ -196,13 +196,6 @@
   		line-height: 1.4;
   		margin-bottom: 10px;
   		margin-top: 0;
-      span.readMore {
-        color: #036;
-        @media only screen and (max-width: 900px) {
-         display: none;
-     
-        }
-      }
   		@media only screen and (max-width: 900px) {
 			font-size: 15px !important;
 		  }
@@ -215,5 +208,17 @@
   		font-weight: normal;
   		font-size: 14px !important;
   	}
+  }
+}
+
+span.readMore {
+  color: #036;
+  font-weight: bold;
+  &:hover {
+    cursor: pointer;
+  }
+  @media only screen and (max-width: 900px) {
+   display: none;
+
   }
 }

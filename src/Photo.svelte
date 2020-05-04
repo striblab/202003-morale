@@ -25,11 +25,11 @@
   }
 
   function shorten(string) {
-    var trimmedString = string.substr(0, 225);
+    var trimmedString = string.substr(0, 250);
 
     trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
 
-    trimmedString = trimmedString + " (...)"
+    // trimmedString = trimmedString + 
 
     return trimmedString
   }

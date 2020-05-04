@@ -113,10 +113,16 @@ def sheet_to_json(obj, filename):
             else:
                 shape = shape_detection(asset, type)
 
-            if len(story) > 250:
-                long = "TRUE"
+            if shape == "Portrait":        
+                if len(story) > 170:
+                    long = "TRUE"
+                else:
+                    long = "FALSE"
             else:
-                long = "FALSE"
+                if len(story) > 250:
+                    long = "TRUE"
+                else:
+                    long = "FALSE"
 
             publish = row[7]
             from_strib = row[9]

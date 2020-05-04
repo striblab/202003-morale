@@ -80,6 +80,7 @@ def sheet_to_json(obj, filename):
         if not row[7] and not row[8]:
             continue
         else:
+            raw_timestamp = parse(row[1]).strftime("%x")
             timestamp = parse(row[1]).strftime("%B %d")
             name = row[2]
             story = url_parse(row[4])
@@ -112,7 +113,7 @@ def sheet_to_json(obj, filename):
             else:
                 shape = shape_detection(asset, type)
 
-            if len(story) > 350:
+            if len(story) > 250:
                 long = "TRUE"
             else:
                 long = "FALSE"
@@ -126,6 +127,7 @@ def sheet_to_json(obj, filename):
             continue
         else:
             obj_props = {
+                "raw_timestamp": raw_timestamp,
                 "timestamp": timestamp,
                 "name": name,
                 "city": city,

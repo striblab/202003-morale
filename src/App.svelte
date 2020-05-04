@@ -61,7 +61,7 @@
       return d.publish === 'TRUE';
     })
 
-		boosters = boosters.reverse();
+		boosters = boosters.sort((a,b) => new Date(b.raw_timestamp) - new Date(a.raw_timestamp))
 
 		boosters = boosters.slice(0, arr_slice_len);
 

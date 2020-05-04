@@ -32,16 +32,16 @@
       {#if booster.long === "TRUE"}
 
         <div class="card strib {booster.type} portrait long">
-          <h5 class="stamp">{booster.timestamp}</h5>
+          <h5 class="stamp">{booster.timestamp} • <span class="green"><a href="{booster.url}" target="_blank">View story</a></span></h5>
           <video height="400" src="{booster.asset}" controls>
             <source src="{booster.asset}" type="video/mp4">
             <source src="{booster.asset}" type="video/quicktime">
           </video>
           <div class="text">
             {#if window_width > 900}
-              <p>{@html shorten(booster.story)} <a href="{booster.url}" target="_blank">Read more</a></p>
+               <p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
             {:else}
-              <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+              <p>{@html booster.story}</p>
             {/if}
           <h4 class="author">{booster.name}, Star Tribune</h4>
           </div>
@@ -50,7 +50,7 @@
       {:else}
 
         <div class="card strib {booster.type} portrait">
-          <h5 class="stamp">{booster.timestamp}</h5>
+          <h5 class="stamp">{booster.timestamp} • <span class="green"><a href="{booster.url}" target="_blank">View story</a></span></h5>
           <video height="400" src="{booster.asset}" controls>
             <source src="{booster.asset}" type="video/mp4">
             <source src="{booster.asset}" type="video/quicktime">
@@ -67,14 +67,14 @@
 
       {#if booster.long === "TRUE"}
         <div class="card strib {booster.type} landscape long">
-          <h5 class="stamp">{booster.timestamp}</h5>
+          <h5 class="stamp">{booster.timestamp} • <span class="green"><a href="{booster.url}" target="_blank">View story</a></span></h5>
 
           <video height="300" src="{booster.asset}" controls>
             <source src="{booster.asset}" type="video/mp4">
           </video>
           <div class="text">
             {#if window_width > 900}
-              <p>{@html shorten(booster.story)} <a href="{booster.url}" target="_blank">Read more</a></p>
+              <p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
             {:else}
               <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
             {/if}
@@ -84,13 +84,13 @@
         </div>
       {:else}
       <div class="card strib {booster.type} landscape">
-          <h5 class="stamp">{booster.timestamp}</h5>
+          <h5 class="stamp">{booster.timestamp} • <span class="green"><a href="{booster.url}" target="_blank">View story</a></span></h5>
 
           <video height="300" src="{booster.asset}" controls>
             <source src="{booster.asset}" type="video/mp4">
           </video>
           <div class="text">
-             <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+             <p>{@html booster.story}</p>
           <h4 class="author">{booster.name}, Star Tribune</h4>
           </div>
 

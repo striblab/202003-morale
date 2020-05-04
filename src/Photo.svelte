@@ -42,23 +42,23 @@
 
     {#if booster.long === "TRUE"}
       <div class="card strib {booster.type} portrait long">
-        <h5 class="stamp">{booster.timestamp}</h5>
+        <h5 class="stamp">{booster.timestamp} • <span class="green"><a href="{booster.url}" target="_blank">View story</a></span></h5>
         <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
         <div class="text">
           {#if window_width > 900}
-            <p>{@html shorten(booster.story)} <a href="{booster.url}" target="_blank">Read more</a></p>
+            <p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
           {:else}
-            <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+            <p>{@html booster.story}</p>
           {/if}
           <h4 class="author">{booster.name}, Star Tribune</h4>
         </div>
       </div>
     {:else}
       <div class="card strib {booster.type} portrait">
-        <h5 class="stamp">{booster.timestamp}</h5>
+        <h5 class="stamp">{booster.timestamp} • <span class="green"><a href="{booster.url}" target="_blank">View story</a></span></h5>
         <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
         <div class="text">
-          <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+          <p>{@html booster.story}</p>
           <h4 class="author">{booster.name}, Star Tribune</h4>
         </div>
       </div>
@@ -68,23 +68,24 @@
   {:else}
     {#if booster.long === "TRUE"}
     <div class="card strib {booster.type} landscape long">
-      <h5 class="stamp">{booster.timestamp}</h5>
+      <h5 class="stamp">{booster.timestamp} • <span class="green"><a href="{booster.url}" target="_blank">View story</a></span></h5>
        <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
         {#if window_width > 900}
-          <p>{@html shorten(booster.story)} <a href="{booster.url}" target="_blank">Read more</a></p>
+         <p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
+          <!-- <p>{@html shorten(booster.story)} <a href="{booster.url}" target="_blank">Read more</a></p> -->
         {:else}
-          <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+          <p>{@html booster.story}</p>
         {/if}
         <h4 class="author">{booster.name}, Star Tribune</h4>
       </div>
     </div>
     {:else}
     <div class="card strib {booster.type} landscape">
-      <h5 class="stamp">{booster.timestamp}</h5>
+      <h5 class="stamp">{booster.timestamp} • <span class="green"><a href="{booster.url}" target="_blank">View story</a></span></h5>
        <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
-        <p>{@html booster.story} <a href="{booster.url}" target="_blank">Read more</a></p>
+        <p>{@html booster.story}</p>
         <h4 class="author">{booster.name}, Star Tribune</h4>
       </div>
     </div>
@@ -98,13 +99,13 @@
 {#if booster.shape === "Portrait"}
 
   {#if booster.long === "TRUE"}
-    <div class="card strib {booster.type} portrait long">
+    <div class="card {booster.type} portrait long">
       <h5 class="stamp">{booster.timestamp}</h5>
       <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
 
         {#if window_width > 900}
-          <p>{@html shorten(booster.story)} <p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
+          <p class="story">{@html shorten(booster.story)} <span class="readMore" on:click={open(booster)}>... Read more</span></p>
         {:else}
           <p>{@html booster.story}</p>
         {/if}
@@ -113,7 +114,7 @@
 
     </div>
   {:else}
-    <div class="card strib {booster.type} portrait">
+    <div class="card {booster.type} portrait">
       <h5 class="stamp">{booster.timestamp}</h5>
       <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({pUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
       <div class="text">
@@ -126,7 +127,7 @@
 
 {:else}
   {#if booster.long === "TRUE"}
-  <div class="card strib {booster.type} landscape long">
+  <div class="card {booster.type} landscape long">
     <h5 class="stamp">{booster.timestamp}</h5>
      <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
     <div class="text">
@@ -139,7 +140,7 @@
     </div>
   </div>
   {:else}
-  <div class="card strib {booster.type} landscape">
+  <div class="card {booster.type} landscape">
     <h5 class="stamp">{booster.timestamp}</h5>
      <div class="photograph" style="background-color:#efefef;width:100%;background-image:url({lUrl});background-repeat:no-repeat;background-size:100%;background-position:center center;"></div>
     <div class="text">

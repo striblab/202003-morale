@@ -11,8 +11,8 @@
   let lWidth = 1000;
   let lHeight = 600;
 
-  let pUrl = booster.asset + '?w=' + pWidth + '&h=' + pHeight + '&fit=crop&crop=faces&max-h=900';
-  let lUrl = booster.asset + '?w=' + lWidth + '&h=' + lHeight + '&fit=crop&crop=faces&max-h=600';
+  let pUrl = booster.asset + '?w=' + pWidth + '&h=' + pHeight + '&fit=crop&crop=faces&max-h=900' + '&cache=trash';
+  let lUrl = booster.asset + '?w=' + lWidth + '&h=' + lHeight + '&fit=crop&crop=faces&max-h=600' + '&cache=trash';
 
   function open(booster) {
     var box = document.querySelector('.lightbox');
@@ -25,7 +25,7 @@
   }
 
   function shorten(string) {
-    var trimmedString = string.substr(0, 250);
+    var trimmedString = string.substr(0, 225);
 
     trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
 

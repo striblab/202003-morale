@@ -1,6 +1,6 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
-  
+
   export let lightbox_booster;
   export let store;
 
@@ -10,8 +10,8 @@
   let lWidth = 1000;
   let lHeight = 600;
 
-  let pUrl = lightbox_booster.asset + '?w=' + pWidth + '&h=' + pHeight + '&fit=crop&crop=faces&max-h=900';
-  let lUrl = lightbox_booster.asset + '?w=' + lWidth + '&h=' + lHeight + '&fit=crop&crop=faces&max-h=600';
+  let pUrl = lightbox_booster.asset + '?w=' + pWidth + '&h=' + pHeight + '&fit=crop&crop=faces&max-h=900' + '&cache=trash';
+  let lUrl = lightbox_booster.asset + '?w=' + lWidth + '&h=' + lHeight + '&fit=crop&crop=faces&max-h=600' + '&cache=trash';
 
   let w = 300;
   let h = 400;

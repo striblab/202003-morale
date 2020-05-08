@@ -69,9 +69,12 @@ def shape_detection(url, type):
             return aspect
 
 def url_parse(string):
-    URL_REGEX = re.compile(r'''((?:mailto:|ftp://|http://|https://)[^ <>'"{}|\\^`[\]]*)''')
+    if "iframe" in string:
+        return string
+    else: 
+        URL_REGEX = re.compile(r'''((?:mailto:|ftp://|http://|https://)[^ <>'"{}|\\^`[\]]*)''')
 
-    return URL_REGEX.sub(r'<a class="externalLink" href="\1">Link</a>', string)
+        return URL_REGEX.sub(r'<a class="externalLink" href="\1">Link</a>', string)
 
 
 def sheet_to_json(obj, filename):
@@ -113,10 +116,16 @@ def sheet_to_json(obj, filename):
             else:
                 shape = shape_detection(asset, type)
 
-            if len(story) > 250:
-                long = "TRUE"
+            if shape == "Portrait":
+                if len(story) > 170:
+                    long = "TRUE"
+                else:
+                    long = "FALSE"
             else:
-                long = "FALSE"
+                if len(story) > 250:
+                    long = "TRUE"
+                else:
+                    long = "FALSE"
 
             publish = row[7]
             from_strib = row[9]

@@ -163,7 +163,7 @@
 
         </div>
       {:else}
-      <div class="card strib {booster.type} landscape">
+      <div class="card {booster.type} landscape">
           <h5 class="stamp">{booster.timestamp}</h5>
 
           <video height="300" src="{booster.asset}" controls>

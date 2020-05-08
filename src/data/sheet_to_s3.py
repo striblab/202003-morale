@@ -116,7 +116,7 @@ def sheet_to_json(obj, filename):
             else:
                 shape = shape_detection(asset, type)
 
-            if shape == "Portrait":
+            if shape == "Portrait":        
                 if len(story) > 170:
                     long = "TRUE"
                 else:

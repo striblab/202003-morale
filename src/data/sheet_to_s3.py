@@ -69,9 +69,12 @@ def shape_detection(url, type):
             return aspect
 
 def url_parse(string):
-    URL_REGEX = re.compile(r'''((?:mailto:|ftp://|http://|https://)[^ <>'"{}|\\^`[\]]*)''')
+    if "iframe" in string:
+        return string
+    else: 
+        URL_REGEX = re.compile(r'''((?:mailto:|ftp://|http://|https://)[^ <>'"{}|\\^`[\]]*)''')
 
-    return URL_REGEX.sub(r'<a class="externalLink" href="\1">Link</a>', string)
+        return URL_REGEX.sub(r'<a class="externalLink" href="\1">Link</a>', string)
 
 
 def sheet_to_json(obj, filename):
